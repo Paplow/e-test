@@ -1,0 +1,31 @@
+{
+    "name": "Pappy/e-test",
+    "description": "A micro e-test package for your laravel application.",
+    "type": ["library", "package"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Lawrence Onah Jnr",
+            "email": "paplow01@gmail.com"
+        }
+    ],
+    "repository": "https://github.com/Paplow/E-test",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0",
+        "illuminate/database": "~5.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Paplow\\eTest": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Paplow\\eTest\\eTestServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
