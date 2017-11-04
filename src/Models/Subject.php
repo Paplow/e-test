@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Paplow\eTest\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
