@@ -15,6 +15,8 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('desc', 255)->nullable();
             $table->timestamps();
         });
     }

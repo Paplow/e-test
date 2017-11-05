@@ -1,5 +1,5 @@
 {
-    "name": "Pappy/e-test",
+    "name": "e-Test",
     "description": "A micro e-test package for your laravel application.",
     "type": ["library", "package"],
     "license": "MIT",

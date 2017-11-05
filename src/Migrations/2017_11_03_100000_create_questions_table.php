@@ -15,6 +15,11 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('question', 1000);
+            $table->enum('type', ['text', 'checkbox', 'radio']);
+            $table->integer('user_id')->unique();
+            $table->integer('subject_id')->foreign()->references('id')
+                ->on('subjects')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

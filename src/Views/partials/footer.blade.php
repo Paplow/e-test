@@ -13,7 +13,7 @@
                 </ul>
                 <nav class="foter-navbar" role="navigation">
                     <ul class="footer-nav" role="menubar">
-                        <li role="menuitem"><a href="{{ route('job-application.index') }}">Apply for Job</a></li>
+                        <li role="menuitem"><a href="{{ route('job-application.index') }}">Apply for a Job</a></li>
                         <li role="menuitem"><a href="{{ route('about') }}">About</a></li>
                         <li role="menuitem"><a href="{{ route('contact') }}">Contact</a></li>
                     </ul>

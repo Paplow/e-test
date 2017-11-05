@@ -15,6 +15,12 @@ class CreateOptionsTable extends Migration
     {
         Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('a', 500)->nullable();
+            $table->string('b', 500)->nullable();
+            $table->string('c', 500)->nullable();
+            $table->string('text', 1000)->nullable();
+            $table->integer('question_id')->foreign()->references('id')
+                ->on('questions')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
