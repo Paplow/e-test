@@ -1,5 +1,5 @@
 @extends('e-test::layouts.app')
-@section('title', 'Manage Courses / Subjects')
+@section('title', $subject->name)
 @section('content')
     <!-- Header -->
     <div class="contact-us">
@@ -8,8 +8,8 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <hgroup class="title-group">
-                            <h1 class="bigtitle">Manage Courses / Subjects</h1>
-                            <h4>Manage all Courses/Subjects here.</h4>
+                            <h1 class="bigtitle">{{ $subject->name }}</h1>
+                            <h4>Manage questions for {{ $subject->name }}</h4>
                         </hgroup>
                     </div>
                 </div>
@@ -28,23 +28,25 @@
                         <!-- Contact Form -->
                         <article class="contact-form clearfix">
                             <div class="col-sm-2">
-                                <a class="btn btn-primary" data-toggle="modal" href="#create_subject">Add Subject</a>
+                                <a class="btn btn-primary" data-toggle="modal" href="#create_question">Add Question</a>
                             </div>
                             <div class="col-sm-9 col-sm-offset-1">
                                 <table class="table table-striped table-hover">
                                     <thead>
                                     <tr>
-                                        <th>Subjects/Courses</th>
-                                        <th>Date</th>
+                                        <th>Questions</th>
+                                        <th>Type</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @forelse($subjects as $subject)
+                                    @forelse($questions as $question)
                                         <tr>
-                                            <td><a href="{{ route('subject.show', $subject->slug) }}">{{ $subject->name }}</a></td>
-                                            <td>{{ $subject->created_at->format('j M, Y') }}</td>
+                                            <td>{{ $question->question }}</td>
+                                            <td>{{ $question->type }}</td>
                                             <td>
+                                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add options">
+                                                    <span class="glyphicon glyphicon-plus"></span></a> &middot;
                                                 <a href="#" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <span class="glyphicon glyphicon-edit"></span></a> &middot;
                                                 <a href="#" data-toggle="tooltip" data-placement="top" title="View">
@@ -67,5 +69,5 @@
 
     </main>
 
-    @include('e-test::subject.modals.create')
+    @include('e-test::subject.modals.show')
 @endsection

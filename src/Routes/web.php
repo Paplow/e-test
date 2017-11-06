@@ -7,6 +7,8 @@ Route::namespace('Paplow\eTest\Controllers')
 
     Route::prefix('e-test')->group(function () {
         Route::resource('subject', 'SubjectController');
+        Route::post('question/{subject}', 'QuestionController@store')->name('question.store');
+        Route::resource('question', 'QuestionController', ['except' => 'store']);
     });
     Route::resource('e-test', 'eTestController');
 

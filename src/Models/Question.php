@@ -11,4 +11,19 @@ class Question extends Model
      * @var array
      */
     protected $guarded = ['id'];
+
+    /**
+     * The table associated with the model.
+     * @var string
+     */
+    protected $table = 'e_questions';
+
+    /**
+     * Relationship with Subject Model
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class, 'subject_id');
+    }
 }

@@ -3,9 +3,11 @@
 namespace Paplow\eTest\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
+use Paplow\eTest\Models\Question;
+use Paplow\eTest\Models\Subject;
 
-class SubjectController extends Controller
+class SubjectController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        return view('e-test::subject.index');
+        $subjects = Subject::latest('id')->get();
+        return view('e-test::subject.index', compact('subjects'));
     }
 
     /**
@@ -35,18 +38,30 @@ class SubjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|string|min:3|unique:subjects'
+        ]);
+
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+        Subject::create($data);
+
+        return redirect()->back()->with(etestify(
+            'Successfully created '.$request->name,
+            'success'
+        ));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Subject $subject
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject)
     {
-        //
+        $questions = Question::whereSubjectId($subject->id)->get();
+        return view('e-test::subject.show', compact('questions', 'subject'));
     }
 
     /**

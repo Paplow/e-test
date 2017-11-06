@@ -11,14 +11,17 @@
     ],
     "repository": "https://github.com/Paplow/E-test",
     "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "~5.0",
-        "illuminate/database": "~5.0"
+        "php": ">=7.0",
+        "illuminate/*": "~5.0",
+        "nesbot/carbon": "~1.20"
     },
     "autoload": {
         "psr-0": {
             "Paplow\\eTest": "src/"
-        }
+        },
+        "files": [
+            "src/eTest/functions.php"
+        ]
     },
     "extra": {
         "laravel": {

@@ -27,12 +27,12 @@
 <!-- Scripts
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <script src="{{ asset('vendor/e-test/js/app.js') }}"></script>
+@include('e-test::extras.sweetalert2')
 <script src="{{ asset('vendor/e-test/js/vendor/jquery.appear.js') }}"></script>
 <script src="{{ asset('vendor/e-test/js/vendor/slick.min.js') }}"></script>
 <script src="{{ asset('vendor/e-test/js/vendor/jquery.countTo.js') }}"></script>
 <script src="{{ asset('vendor/e-test/js/vendor/jquery.parallax.min.js') }}"></script>
 <script src="{{ asset('vendor/e-test/js/vendor/jquery.magnific-popup.min.js') }}"></script>
-
 <script src="{{ asset('vendor/e-test/js/main.js') }}"></script>
 
 </body>

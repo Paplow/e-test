@@ -4,7 +4,7 @@ namespace Paplow\eTest\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Answer extends Model
+class Option extends Model
 {
     /**
      * The attributes that aren't mass assignable.
@@ -16,5 +16,5 @@ class Answer extends Model
      * The table associated with the model.
      * @var string
      */
-    protected $table = 'e_answers';
+    protected $table = 'e_options';
 }

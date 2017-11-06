@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubjectsTable extends Migration
+class CreateEAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('e_answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->string('desc', 255)->nullable();
+            $table->string('answer', 1000)->nullable();
+            $table->integer('user_id');
+            $table->integer('option_id')->foreign()->references('id')
+                ->on('options')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateSubjectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('e_answers');
     }
 }

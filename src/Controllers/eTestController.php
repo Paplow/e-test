@@ -3,9 +3,8 @@
 namespace Paplow\eTest\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class eTestController extends Controller
+class eTestController extends BaseController
 {
     /**
      * Display a listing of the resource.

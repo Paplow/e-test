@@ -3,9 +3,10 @@
 namespace Paplow\eTest\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Illuminate\Validation\Rule;
+use Paplow\eTest\Models\Subject;
 
-class QuestionController extends Controller
+class QuestionController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -30,12 +31,22 @@ class QuestionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     * @param Subject $subject
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Subject $subject)
     {
-        //
+        $this->validate($request, [
+            'question' => 'required|string|min:5',
+            'type' => 'string', Rule::in(['text', 'checkbox', 'radio'])
+        ]);
+
+        $subject->questions()->create($request->all());
+        return redirect()->back()->with(etestify(
+            'Successfully created!',
+            'success'
+        ));
     }
 
     /**
