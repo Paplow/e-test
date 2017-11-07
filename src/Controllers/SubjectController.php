@@ -21,13 +21,16 @@ class SubjectController extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Start the Test or Exam
      *
+     * @param $subject
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function start($subject)
     {
-        //
+        $subject = Subject::with('questions', 'questions.option', 'questions.option.answer')
+            ->whereSlug($subject)->first();
+        return view('e-test::subject.start', compact('subject'));
     }
 
     /**

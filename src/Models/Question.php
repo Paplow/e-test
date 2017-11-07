@@ -26,4 +26,13 @@ class Question extends Model
     {
         return $this->belongsTo(Subject::class, 'subject_id');
     }
+
+    /**
+     * Relationship with Option Model
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function option()
+    {
+        return $this->hasOne(Option::class, 'question_id');
+    }
 }

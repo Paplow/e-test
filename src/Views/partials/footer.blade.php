@@ -35,5 +35,9 @@
 <script src="{{ asset('vendor/e-test/js/vendor/jquery.magnific-popup.min.js') }}"></script>
 <script src="{{ asset('vendor/e-test/js/main.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+<!-- Include SmartWizard JavaScript source -->
+<script type="text/javascript" src="{{ asset('vendor/e-test/js/jquery.smartWizard.min.js') }}"></script>
+@yield('scripts')
 </body>
 </html>

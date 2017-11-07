@@ -3,9 +3,9 @@
 namespace Paplow\eTest\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Paplow\eTest\Models\Question;
 
-class OptionController extends Controller
+class OptionController extends BaseController
 {
     /**
      * Display a listing of the resource.
@@ -30,12 +30,22 @@ class OptionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
+     * @param Question $question
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Question $question)
     {
-        //
+        $this->validate($request, [
+            'answer' => 'required'
+        ]);
+
+        $question->option()->create($request->all());
+
+        return redirect()->back()->with(etestify(
+            'Successfully created!',
+            'success'
+        ));
     }
 
     /**

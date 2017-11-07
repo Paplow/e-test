@@ -17,4 +17,13 @@ class Answer extends Model
      * @var string
      */
     protected $table = 'e_answers';
+
+    /**
+     * Relationship with Option Model
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function option()
+    {
+        return $this->belongsTo(Option::class, 'option_id');
+    }
 }

@@ -28,7 +28,10 @@
                         <!-- Contact Form -->
                         <article class="contact-form clearfix">
                             <div class="col-sm-2">
-                                <a class="btn btn-primary" data-toggle="modal" href="#create_question">Add Question</a>
+                                <div class="btn-group-vertical">
+                                    <a href="{{ route('subject.index') }}" class="btn btn-default">&laquo; Back</a>
+                                    <a class="btn btn-primary" data-toggle="modal" href="#create_question">Add Question</a>
+                                </div>
                             </div>
                             <div class="col-sm-9 col-sm-offset-1">
                                 <table class="table table-striped table-hover">
@@ -45,7 +48,7 @@
                                             <td>{{ $question->question }}</td>
                                             <td>{{ $question->type }}</td>
                                             <td>
-                                                <a href="#" data-toggle="tooltip" data-placement="top" title="Add options">
+                                                <a href="{{ route('question.show', [$subject->slug, $question->id]) }}" data-toggle="tooltip" data-placement="top" title="Add options">
                                                     <span class="glyphicon glyphicon-plus"></span></a> &middot;
                                                 <a href="#" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <span class="glyphicon glyphicon-edit"></span></a> &middot;

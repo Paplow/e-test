@@ -4,6 +4,7 @@ namespace Paplow\eTest\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Paplow\eTest\Models\Question;
 use Paplow\eTest\Models\Subject;
 
 class QuestionController extends BaseController
@@ -52,12 +53,13 @@ class QuestionController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Subject $subject
+     * @param Question $question
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Subject $subject, Question $question)
     {
-        //
+        return view('e-test::question.index', compact('subject', 'question'));
     }
 
     /**
