@@ -31,7 +31,8 @@
                                 <div class="btn-group-vertical">
                                     <a href="{{ route('subject.show', $subject->slug) }}" class="btn btn-default">&laquo; Back</a>
                                     @if(empty($question->option))
-                                        <a class="btn btn-primary" data-toggle="modal" href="#create_option">Add Question</a>
+                                        <a class="btn btn-primary" data-toggle="modal" href="#create_option">
+                                            Add {{ ($question->type !== 'text') ? 'Options' : 'Answer' }}</a>
                                     @endif
                                 </div>
                             </div>
@@ -52,11 +53,11 @@
                                     {{--@forelse($question->option as $option)--}}
                                         <tr>
                                             @if($question->type !== 'text')
-                                                <td>{{ $question->option->a }}</td>
-                                                <td>{{ $question->option->b }}</td>
-                                                <td>{{ $question->option->c }}</td>
+                                                <td>{{ $question->option->a ?? '' }}</td>
+                                                <td>{{ $question->option->b ?? '' }}</td>
+                                                <td>{{ $question->option->c ?? '' }}</td>
                                             @endif
-                                            <td>{{ ucfirst($question->option->answer ?? 'None') }}</td>
+                                            <td>{{ ucfirst($question->option->answer ?? '') }}</td>
                                             <td>
                                                 <a href="#" data-toggle="tooltip" data-placement="top" title="Add options">
                                                     <span class="glyphicon glyphicon-plus"></span></a> &middot;

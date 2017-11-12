@@ -14,7 +14,7 @@ class CreateEAnswersTable extends Migration
     public function up()
     {
         Schema::create('e_answers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('answer', 1000)->nullable();
             $table->integer('user_id');
             $table->integer('option_id')->foreign()->references('id')

@@ -25,6 +25,9 @@
                     $.ajax({
                         type: "POST",
                         url: url,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
                         data: {
                             "name": $("#contact-form #name").val(),
                             "email": $("#contact-form #email").val(),
@@ -60,6 +63,13 @@
                         }
                     },
                     complete: function () {
+                        swal({
+                            title: "Success!",
+                            html: "We have received your message and will get back to you shortly.",
+                            type: "success",
+                            confirmButtonText: 'OK'
+                        });
+
                         submitButton.button("reset");
                         $("#contact-form")[0].reset();
                         }

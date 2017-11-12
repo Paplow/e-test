@@ -3,7 +3,6 @@
 namespace Paplow\eTest\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Paplow\eTest\Models\Events\OptionSaving;
 
 class Option extends Model
 {
@@ -19,9 +18,14 @@ class Option extends Model
      */
     protected $table = 'e_options';
 
-    protected $dispatchesEvents = [
-        'saving' => OptionSaving::class
-    ];
+    /**
+     * Answer attribute Mutator
+     * @param $answer
+     */
+    public function setAnswerAttribute($answer)
+    {
+        $this->attributes['answer'] = strtolower($answer);
+    }
 
     /**
      * Relationship with Question Model

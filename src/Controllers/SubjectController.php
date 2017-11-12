@@ -42,7 +42,7 @@ class SubjectController extends BaseController
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|min:3|unique:subjects'
+            'name' => 'required|string|min:3|unique:e_subjects'
         ]);
 
         $data = $request->all();

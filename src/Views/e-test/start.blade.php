@@ -36,7 +36,7 @@
                                 <div id="smartwizard">
                                     <ul>
                                         @foreach($subject->questions as $question)
-                                            <li><a href="#step-{{ $question->id }}"> Qst. {{ $question->id }}<br/>
+                                            <li><a href="#step-{{ $question->id }}">Qst.{{ $question->id }}<br/>
                                                     {{--<small>Answer</small>--}}
                                                 </a>
                                             </li>
@@ -51,7 +51,7 @@
                                                         {{--<label for="email">Email address:</label>--}}
                                                         @if($question->type === 'text')
                                                             <textarea class="form-control" name="{{ $question->id }}" id="answer"
-                                                                      rows="1" placeholder="Write your answer..."
+                                                                      rows="2" placeholder="Write your answer..."
                                                                       required></textarea>
                                                         @else
                                                             <label>
@@ -75,6 +75,7 @@
                                             @endforeach
                                         </div>
                                 </div>
+                                <input type="hidden" id="user_id" name="user_id" value="{{ $_GET['email'] }}">
                             </form>
 
                             {{--</div>--}}

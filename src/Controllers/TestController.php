@@ -2,7 +2,9 @@
 
 namespace Paplow\eTest\Controllers;
 
+use App\JobApplication;
 use Illuminate\Http\Request;
+use Paplow\eTest\Models\Answer;
 use Paplow\eTest\Models\Subject;
 
 class TestController extends BaseController
@@ -31,6 +33,20 @@ class TestController extends BaseController
     public function finish(Request $request, Subject $subject)
     {
         dd($request->all());
+        $user_id = JobApplication::whereEmail($request->get('user_id'))->first()->id;
+        try {
+            foreach (array_except($request->all(), '_token') as $item => $value) {
+                Answer::create([
+                    'answer' => $value,
+                    'user_id' => $user_id,
+                    'option_id' => $item,
+                ]);
+            }
+        }
+        catch (\Exception $e)
+        {
+            dd($e->getMessage());
+        }
 
         return redirect()->back()->with(etestify(
             'Test successfully submitted.',
