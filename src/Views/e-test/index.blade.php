@@ -28,26 +28,22 @@
                         <!-- Contact Form -->
                         <article class="contact-form clearfix">
                             <div class="col-sm-6">
-                                <a href="{{ route('subject.index') }}">
-                                    <div class="iconbox">
-                                        <i class="icon icon-book"></i>
-                                        <div class="box">
-                                            <h4 class="title">Courses/Subject</h4>
-                                            <p>Views/Manage all Courses/Subject here.</p>
-                                        </div>
+                                <div class="iconbox">
+                                    <i class="icon icon-book"></i>
+                                    <div class="box">
+                                        <a href="{{ route('subject.index') }}"><h4 class="title">Test Subject</h4></a>
+                                        <p>Manage all test subjects here.</p>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                             <div class="col-sm-6">
-                                <a href="#">
-                                    <div class="iconbox">
-                                        <i class="icon icon-help"></i>
-                                        <div class="box">
-                                            <h4 class="title">Questions</h4>
-                                            <p>Manage questions here.</p>
-                                        </div>
+                                <div class="iconbox">
+                                    <i class="icon icon-new-message"></i>
+                                    <div class="box">
+                                        <a href="{{ route('answer.index') }}"><h4 class="title">Test Answer</h4></a>
+                                        <p>Manage all test answer here.</p>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         </article>
                     </div>

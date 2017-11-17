@@ -18,6 +18,7 @@ class CreateESubjectsTable extends Migration
             $table->string('name')->unique();
             $table->string('slug');
             $table->string('desc', 255)->nullable();
+            $table->char('time')->default('30');
             $table->timestamps();
         });
     }

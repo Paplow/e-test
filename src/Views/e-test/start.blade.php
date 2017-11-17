@@ -53,7 +53,7 @@
                                                             <textarea class="form-control" name="{{ $question->id }}" id="answer"
                                                                       rows="2" placeholder="Write your answer..."
                                                                       required></textarea>
-                                                        @else
+                                                        @elseif($question->type === 'radio')
                                                             <label>
                                                                 <input type="{{ $question->type }}" name="{{ $question->id }}"
                                                                        id="a" value="a"> {{ $question->option->a }}
@@ -66,6 +66,19 @@
                                                                 <input type="{{ $question->type }}" name="{{ $question->id }}"
                                                                        id="c" value="c"> {{ $question->option->c }}
                                                             </label>
+                                                        @else
+                                                            <label>
+                                                                <input type="{{ $question->type }}" name="{{ $question->id }}[]"
+                                                                       id="a" value="a"> {{ $question->option->a }}
+                                                            </label> <br>
+                                                            <label>
+                                                                <input type="{{ $question->type }}" name="{{ $question->id }}[]"
+                                                                       id="b" value="b"> {{ $question->option->b }}
+                                                            </label> <br>
+                                                            <label>
+                                                                <input type="{{ $question->type }}" name="{{ $question->id }}[]"
+                                                                       id="c" value="c"> {{ $question->option->c }}
+                                                            </label>
                                                         @endif
                                                         <div class="help-block with-errors"></div>
                                                     </div>
@@ -75,7 +88,7 @@
                                             @endforeach
                                         </div>
                                 </div>
-                                <input type="hidden" id="user_id" name="user_id" value="{{ $_GET['email'] }}">
+                                <input type="hidden" id="email" name="email" value="{{ $_GET['email'] }}">
                             </form>
 
                             {{--</div>--}}
@@ -105,12 +118,6 @@
                                 alert('Oops we still have error in the form');
                                 return false;
                             } else {
-                                swal({
-                                    title: "Success!",
-                                    text: "Test successfully submitted.",
-                                    type: "success",
-                                    confirmButtonText: 'OK'
-                                });
                                 elmForm.submit();
                                 return false;
                             }
@@ -123,7 +130,6 @@
                     $('#smartwizard').smartWizard("reset");
                     $('#myForm').find("input, textarea").val("");
                 });
-
 
             // Smart Wizard
             $('#smartwizard').smartWizard({

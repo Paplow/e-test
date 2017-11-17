@@ -9,6 +9,10 @@ use Paplow\eTest\Models\Subject;
 
 class SubjectController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -63,7 +67,7 @@ class SubjectController extends BaseController
      */
     public function show(Subject $subject)
     {
-        $questions = Question::whereSubjectId($subject->id)->get();
+        $questions = Question::whereSubjectId($subject->id)->latest('id')->get();
         return view('e-test::subject.show', compact('questions', 'subject'));
     }
 

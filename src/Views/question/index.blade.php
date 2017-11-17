@@ -57,7 +57,7 @@
                                                 <td>{{ $question->option->b ?? '' }}</td>
                                                 <td>{{ $question->option->c ?? '' }}</td>
                                             @endif
-                                            <td>{{ ucfirst($question->option->answer ?? '') }}</td>
+                                            <td>{{ ucfirst($question->option->answer ?? 'None') }}</td>
                                             <td>
                                                 <a href="#" data-toggle="tooltip" data-placement="top" title="Add options">
                                                     <span class="glyphicon glyphicon-plus"></span></a> &middot;

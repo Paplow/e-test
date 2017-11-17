@@ -21,11 +21,12 @@ class Option extends Model
     /**
      * Answer attribute Mutator
      * @param $answer
+     * @return string
      */
-    public function setAnswerAttribute($answer)
+    /*public function setAnswerAttribute($answer)
     {
-        $this->attributes['answer'] = strtolower($answer);
-    }
+        return $this->attributes['answer'] = strtolower($answer);
+    }*/
 
     /**
      * Relationship with Question Model

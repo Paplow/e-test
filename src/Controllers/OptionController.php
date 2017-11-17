@@ -7,6 +7,10 @@ use Paplow\eTest\Models\Question;
 
 class OptionController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -39,8 +43,9 @@ class OptionController extends BaseController
         $this->validate($request, [
             'answer' => 'required'
         ]);
-
-        $question->option()->create($request->all());
+        $data = $request->all();
+        $data['text'] = ($question->type == 'text');
+        $question->option()->create($data);
 
         return redirect()->back()->with(etestify(
             'Successfully created!',

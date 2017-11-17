@@ -18,13 +18,16 @@ class TestController extends BaseController
      */
     public function start($subject)
     {
+        if (is_null(JobApplication::whereEmail(request('email'))->first()))
+            return abort(404);
+
         $subject = Subject::with('questions', 'questions.option', 'questions.option.answer')
             ->whereSlug($subject)->first();
         return view('e-test::e-test.start', compact('subject'));
     }
 
     /**
-     * Start the Test or Exam
+     * Finish the Test or Exam
      *
      * @param Request $request
      * @param Subject $subject
@@ -32,25 +35,26 @@ class TestController extends BaseController
      */
     public function finish(Request $request, Subject $subject)
     {
-        dd($request->all());
-        $user_id = JobApplication::whereEmail($request->get('user_id'))->first()->id;
+        $this->validate($request, [
+            'email' => 'required|email|exists:job_applications'
+        ]);
+
         try {
-            foreach (array_except($request->all(), '_token') as $item => $value) {
+            $user_id = JobApplication::whereEmail($request->get('email'))->first()->id;
+            foreach (array_except($request->all(), ['_token', 'email']) as $item => $value) {
                 Answer::create([
-                    'answer' => $value,
+                    'answer' => (is_array($value)) ? implode(',', $value) : $value,
                     'user_id' => $user_id,
-                    'option_id' => $item,
+                    'option_id' => $item
                 ]);
             }
+
+            flash()->success('Test successfully submitted.');
+            return redirect()->route('index');
         }
         catch (\Exception $e)
         {
-            dd($e->getMessage());
+            return redirect()->back()->with(etestify($e->getMessage(), 'error'));
         }
-
-        return redirect()->back()->with(etestify(
-            'Test successfully submitted.',
-            'success'
-        ));
     }
 }

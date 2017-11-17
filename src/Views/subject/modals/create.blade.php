@@ -12,13 +12,17 @@
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" id="name" placeholder="Name of Course or Subject">
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Subject Name">
                     </div>
-
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input type="text" class="form-control" name="time" id="time" placeholder="Time in minutes">
+                        <span class="help-block">Time in minutes (e.g 20 for 20 minutes) and so on.</span>
+                    </div>
                     <div class="form-group">
                         <label for="desc">Description</label>
                         <textarea class="form-control" name="desc" id="desc"
-                                  maxlength="255" placeholder="Name of Course or Subject"></textarea>
+                                  maxlength="255" placeholder="Description"></textarea>
                     </div>
                 </form>
             </div>

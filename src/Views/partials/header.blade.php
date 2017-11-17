@@ -32,7 +32,9 @@
 <nav class="navbar navbar-burger navbar-fixed-top is-transparent" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ route('index') }}">{{ config('app.name') }}</a>
+            <a class="navbar-brand" href="{{ route('index') }}">
+                <img src="{{ asset('vendor/e-test/img/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" style="height: 40px">
+            </a>
             <span class="sr-only">Toggle navigation</span>
             <button class="icon icon-menu burger-menu"></button>
         </div>

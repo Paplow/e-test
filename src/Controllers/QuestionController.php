@@ -9,6 +9,10 @@ use Paplow\eTest\Models\Subject;
 
 class QuestionController extends BaseController
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
