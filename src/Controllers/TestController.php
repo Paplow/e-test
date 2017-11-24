@@ -49,7 +49,7 @@ class TestController extends BaseController
                 ]);
             }
 
-            flash()->success('Test successfully submitted.');
+            flash()->success($subject->name.' successfully submitted.');
             return redirect()->route('index');
         }
         catch (\Exception $e)

@@ -46,9 +46,10 @@
                                     @forelse($subject->questions as $question)
                                         <tr>
                                             <td>{{ $question->question }}</td>
-                                            <td>{{ $question->option->answer }}</td>
+                                            <td>{{ $question->option->answer ?? 'None' }}</td>
                                             <td>
-                                                @if(strtolower($question->option->answer()->latest('id')->first()->answer) == strtolower($question->option->answer))
+                                                @if($question->option &&
+                                                (strtolower($question->option->answer()->latest('id')->first()->answer) == strtolower($question->option->answer)))
                                                     <span style="color: forestgreen" class="glyphicon glyphicon-ok"></span>
                                                 @else
                                                     <span style="color: indianred" class="glyphicon glyphicon-remove"></span>

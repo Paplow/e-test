@@ -9,7 +9,7 @@
                     <div class="col-xs-12">
                         <hgroup class="title-group">
                             <h1 class="bigtitle">{{ $subject->name }}</h1>
-                            <h4>Test Started</h4>
+                            <h4>You have <b>{{ $subject->time }}minutes</b></h4>
                         </hgroup>
                     </div>
                 </div>
@@ -51,8 +51,8 @@
                                                         {{--<label for="email">Email address:</label>--}}
                                                         @if($question->type === 'text')
                                                             <textarea class="form-control" name="{{ $question->id }}" id="answer"
-                                                                      rows="2" placeholder="Write your answer..."
-                                                                      required></textarea>
+                                                                      rows="2" placeholder="Write your answer..." maxlength="1000"
+                                                                      required autofocus></textarea>
                                                         @elseif($question->type === 'radio')
                                                             <label>
                                                                 <input type="{{ $question->type }}" name="{{ $question->id }}"
