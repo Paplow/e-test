@@ -28,6 +28,16 @@ class Subject extends Model
     }
 
     /**
+     * Mutator for name attribute
+     * @param $name
+     * @return string
+     */
+    public function setNameAttribute($name)
+    {
+        return $this->attributes['name'] = ucfirst($name);
+    }
+
+    /**
      * Relationship with Question Model
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

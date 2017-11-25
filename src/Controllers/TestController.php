@@ -2,7 +2,7 @@
 
 namespace Paplow\eTest\Controllers;
 
-use App\JobApplication;
+use App\User;
 use Illuminate\Http\Request;
 use Paplow\eTest\Models\Answer;
 use Paplow\eTest\Models\Subject;
@@ -18,8 +18,8 @@ class TestController extends BaseController
      */
     public function start($subject)
     {
-        if (is_null(JobApplication::whereEmail(request('email'))->first()))
-            return abort(404);
+        /*if (is_null(User::whereEmail(request('email'))->first()))
+            return abort(404);*/
 
         $subject = Subject::with('questions', 'questions.option', 'questions.option.answer')
             ->whereSlug($subject)->first();
@@ -36,11 +36,11 @@ class TestController extends BaseController
     public function finish(Request $request, Subject $subject)
     {
         $this->validate($request, [
-            'email' => 'required|email|exists:job_applications'
+            'email' => 'required|email|exists:users'
         ]);
 
         try {
-            $user_id = JobApplication::whereEmail($request->get('email'))->first()->id;
+            $user_id = User::whereEmail($request->get('email'))->first()->id;
             foreach (array_except($request->all(), ['_token', 'email']) as $item => $value) {
                 Answer::create([
                     'answer' => (is_array($value)) ? implode(',', $value) : $value,

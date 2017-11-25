@@ -11,7 +11,7 @@ class QuestionController extends BaseController
 {
     public function __construct()
     {
-        $this->middleware('admin');
+//        $this->middleware('admin');
     }
     /**
      * Display a listing of the resource.
@@ -63,7 +63,7 @@ class QuestionController extends BaseController
      */
     public function show(Subject $subject, Question $question)
     {
-        return view('e-test::question.index', compact('subject', 'question'));
+        return view('e-test::question.option', compact('subject', 'question'));
     }
 
     /**

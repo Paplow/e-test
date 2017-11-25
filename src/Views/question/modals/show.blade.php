@@ -13,10 +13,11 @@
 
                     <div class="form-group">
                         <label for="type">Types</label>
-                        <select class="form-control" name="type" id="type">
-                            <option value="checkbox">Check-box</option>
-                            <option value="radio">Radio</option>
+                        <select class="form-control" name="type" id="type" required>
+                            <option value="">-- Pick one --</option>
                             <option value="text">Text</option>
+                            <option value="radio">Radio</option>
+                            <option value="checkbox">Checkbox</option>
                         </select>
                     </div>
                     <div class="form-group">

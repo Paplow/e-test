@@ -15,8 +15,8 @@
                         <input type="text" class="form-control" name="name" id="name" placeholder="Subject Name">
                     </div>
                     <div class="form-group">
-                        <label for="time">Time</label>
-                        <input type="text" class="form-control" name="time" id="time" placeholder="Time in minutes">
+                        <label for="duration">Duration</label>
+                        <input type="text" class="form-control" name="duration" id="duration" placeholder="Time in minutes">
                         <span class="help-block">Time in minutes (e.g 20 for 20 minutes) and so on.</span>
                     </div>
                     <div class="form-group">

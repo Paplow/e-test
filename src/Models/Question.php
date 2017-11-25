@@ -19,6 +19,16 @@ class Question extends Model
     protected $table = 'e_questions';
 
     /**
+     * Mutator for question attribute
+     * @param $question
+     * @return string
+     */
+    public function setQuestionAttribute($question)
+    {
+        return $this->attributes['question'] = ucfirst($question);
+    }
+
+    /**
      * Relationship with Subject Model
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

@@ -44,6 +44,10 @@ class eTestServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if (!$this->app->getProvider(\Yajra\DataTables\DataTablesServiceProvider::class)) {
+            $this->app->register(\Yajra\DataTables\DataTablesServiceProvider::class);
+            $this->app->register(\Yajra\DataTables\HtmlServiceProvider::class);
+        }
 
     }
 
