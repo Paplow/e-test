@@ -30,7 +30,7 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('e-test.index') }}">
                     {{ config('app.name', 'e-Test') }}
                 </a>
             </div>

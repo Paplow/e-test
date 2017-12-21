@@ -1,5 +1,5 @@
 {
-    "name": "e-Test",
+    "name": "paplow/e-test",
     "description": "A micro e-test package for your laravel application.",
     "type": ["library", "package"],
     "license": "MIT",

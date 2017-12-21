@@ -10,8 +10,7 @@
     <!-- Content -->
     <main class="main" role="main">
 
-        <!-- Contact Form / Address -->
-        <section class="section">
+        <section class="section content">
             <div class="container">
                 <div class="row">
                     <article class="contact-form clearfix">
